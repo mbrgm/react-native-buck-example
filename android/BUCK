@@ -1,0 +1,231 @@
+android_binary(
+  name = 'app',
+  manifest = 'src/main/AndroidManifest.xml',
+  keystore = ':debug_keystore',
+  proguard_config = './proguard-rules.pro',
+  deps = [
+    '//android/src/main/java/com/example/activity:activity',
+    ':android-jsc',
+    ':appcompat-v7',
+    ':build_config',
+    ':fbcore',
+    ':react-native',
+  ],
+)
+
+
+android_build_config(
+  name = 'build_config',
+  package = 'com.example',
+  values = [],
+  visibility = [ 'PUBLIC' ],
+)
+
+
+keystore(
+  name = 'debug_keystore',
+  store = 'debug.keystore',
+  properties = 'debug.keystore.properties',
+)
+
+
+project_config(
+  src_target = ':app',
+)
+
+
+android_prebuilt_aar(
+  name = 'react-native',
+  aar = ':react-native-aar',
+  deps = [
+    ':jsr305',
+    ':okhttp',
+    ':android-jsc',
+    ':fresco',
+    ':imagepipeline-okhttp',
+    ':jackson-core',
+    ':okhttp-ws',
+    ':okio',
+    ':appcompat-v7',
+    ':recyclerview-v7',
+  ],
+  visibility = [ 'PUBLIC' ],
+)
+
+
+remote_file(
+  name = 'react-native-aar',
+  out = 'react-native-0.14.0.aar',
+  url = 'mvn:com.facebook.react:react-native:aar:0.14.0',
+  sha1 = '551ac3d271e56d90cc5222888cd0c7fe73e4b454',
+)
+
+
+prebuilt_jar(
+  name = 'jsr305',
+  binary_jar = ':jsr305-jar',
+)
+
+
+remote_file(
+  name = 'jsr305-jar',
+  out = 'jsr305-3.0.0.jar',
+  url = 'mvn:com.google.code.findbugs:jsr305:jar:3.0.0',
+  sha1 = '5871fb60dc68d67da54a663c3fd636a10a532948',
+)
+
+
+prebuilt_jar(
+  name = 'okhttp',
+  binary_jar = ':okhttp-jar',
+)
+
+
+remote_file(
+  name = 'okhttp-jar',
+  out = 'okhttp-2.4.0.jar',
+  url = 'mvn:com.squareup.okhttp:okhttp:jar:2.4.0',
+  sha1 = '40340c0748190fe897baf7bffbc1b282734294e5',
+)
+
+
+android_prebuilt_aar(
+  name = 'android-jsc',
+  aar = ':android-jsc-aar',
+)
+
+
+remote_file(
+  name = 'android-jsc-aar',
+  out = 'android-jsc-r174650.aar',
+  url = 'mvn:org.webkit:android-jsc:aar:r174650',
+  sha1 = '880cedd93f43e0fc841f01f2fa185a63d9230f85',
+)
+
+
+android_prebuilt_aar(
+  name = 'fbcore',
+  aar = ':fbcore-aar',
+)
+
+
+remote_file(
+  name = 'fbcore-aar',
+  out = 'fbcore-0.6.1.aar',
+  url = 'mvn:com.facebook.fresco:fbcore:aar:0.6.1',
+  sha1 = 'f5a799b056166f616a7a20f17022a88f853e54b3',
+)
+
+
+
+android_prebuilt_aar(
+  name = 'fresco',
+  aar = ':fresco-aar',
+)
+
+
+remote_file(
+  name = 'fresco-aar',
+  out = 'fresco-0.6.1.aar',
+  url = 'mvn:com.facebook.fresco:fresco:aar:0.6.1',
+  sha1 = 'd14dd4fb08bad390140dc0b99b2dba24eac8ba5b',
+)
+
+
+android_prebuilt_aar(
+  name = 'imagepipeline-okhttp',
+  aar = ':imagepipeline-okhttp-aar',
+)
+
+
+remote_file(
+  name = 'imagepipeline-okhttp-aar',
+  out = 'imagepipeline-okhttp-0.6.1.aar',
+  url = 'mvn:com.facebook.fresco:imagepipeline-okhttp:aar:0.6.1',
+  sha1 = '578bdb0ff6e064b51042f4e25e389ca146c324c6',
+)
+
+
+prebuilt_jar(
+  name = 'jackson-core',
+  binary_jar = ':jackson-core-jar',
+)
+
+
+remote_file(
+  name = 'jackson-core-jar',
+  out = 'jackson-core-2.2.3.jar',
+  url = 'mvn:com.fasterxml.jackson.core:jackson-core:jar:2.2.3',
+  sha1 = '1a0113da2cab5f4c216b4e5e7c1dbfaa67087e14',
+)
+
+
+prebuilt_jar(
+  name = 'okhttp-ws',
+  binary_jar = ':okhttp-ws-jar',
+)
+
+
+remote_file(
+  name = 'okhttp-ws-jar',
+  out = 'okhttp-ws-2.4.0.jar',
+  url = 'mvn:com.squareup.okhttp:okhttp-ws:jar:2.4.0',
+  sha1 = '69206d28966656052a982ceded583abdeb41cf63',
+)
+
+
+prebuilt_jar(
+  name = 'okio',
+  binary_jar = ':okio-jar',
+)
+
+
+remote_file(
+  name = 'okio-jar',
+  out = 'okio-1.5.0.jar',
+  url = 'mvn:com.squareup.okio:okio:jar:1.5.0',
+  sha1 = 'bb7d4d96e780e8ef4f275c7d8dd3ef2883ddf99a',
+)
+
+
+android_prebuilt_aar(
+  name = 'recyclerview-v7',
+  aar = ':recyclerview-v7-aar',
+)
+
+
+remote_file(
+  name = 'recyclerview-v7-aar',
+  out = 'recyclerview-v7-23.0.1.aar',
+  url = 'mvn:com.android.support:recyclerview-v7:aar:23.0.1',
+  sha1 = '94d5f16be156521e135295e2ffa70d79ef8ad9d5',
+)
+
+
+android_prebuilt_aar(
+  name = 'appcompat-v7',
+  aar = ':appcompat-v7-aar',
+  deps = [ ':support-v4' ],
+)
+
+
+remote_file(
+  name = 'appcompat-v7-aar',
+  out = 'appcompat-v7-23.0.1.aar',
+  url = 'mvn:com.android.support:appcompat-v7:aar:23.0.1',
+  sha1 = '7d659f671541394a8bc2b9f909950aa2a5ec87ff',
+)
+
+
+android_prebuilt_aar(
+  name = 'support-v4',
+  aar = ':support-v4-aar',
+)
+
+
+remote_file(
+  name = 'support-v4-aar',
+  out = 'support-v4-23.0.1.aar',
+  url = 'mvn:com.android.support:support-v4:aar:23.0.1',
+  sha1 = '9e8da0e4ecf9f63258c7fbd273889252cba2d0c3',
+)

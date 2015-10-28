@@ -1,0 +1,6 @@
+[android]
+  target = android-23
+
+[maven_repositories]
+  android = /usr/local/opt/android-sdk/extras/android/m2repository
+  central = https://repo1.maven.org/maven2
